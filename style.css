@@ -2,3 +2,30 @@
     color: azure;
     font-weight: bold;
 }
+
+#main {
+    position: fixed;
+    margin-top: 12%;
+    background: rgba(0, 0, 0, .5);
+    color: #f1f1f1;
+    width: 100%;
+    padding: 20px;
+    position: sticky; 
+}
+
+#cloudVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+#confirm {
+    width: 200px;
+    font-size: 18px;
+    padding: 10px;
+    border: none;
+    background: #000;
+    cursor: pointer;
+}
