@@ -30,3 +30,7 @@
     background: #000;
     cursor: pointer;
 }
+
+.container3 {
+    display: none;
+}
