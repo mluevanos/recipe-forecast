@@ -1,8 +1,11 @@
+ /* Text */
 .whiteText {
     color: azure;
     font-weight: bold;
 }
+/* End Text */
 
+/* Home Container */
 #main {
     position: fixed;
     margin-top: 12%;
@@ -12,16 +15,48 @@
     padding: 20px;
     position: sticky; 
 }
+/* End Home Container */
 
-
-
+/* Videos */
 .video {
-    display: none;
     position: fixed;
+    position: fixed;
+    right: 0;
+    bottom: 0;
     min-width: 100%;
     min-height: 100%;
 }
 
+#homeVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+#cloudyVideo {
+    display: none;
+}
+
+#windyVideo {
+    display: none;
+}
+
+#rainVideo {
+    display: none;
+}
+
+#snowVideo {
+    display: none;
+}
+
+#sunnyVideo {
+    display: none;
+}
+/* End Video*/
+
+/* Button */
 #confirm {
     width: 200px;
     font-size: 18px;
@@ -30,7 +65,10 @@
     background: #000;
     cursor: pointer;
 }
+/* End Button */
 
+/* Results Container */
 .container3 {
     display: none;
 }
+/* End Results Container */
