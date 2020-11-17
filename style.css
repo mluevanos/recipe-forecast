@@ -1,3 +1,8 @@
+ #main {
+     background-image: url("assets/clouds.mp4");
+     background-size: cover;
+ }
+ 
  /* Text */
 .whiteText {
     color: azure;
@@ -5,21 +10,9 @@
 }
 /* End Text */
 
-/* Home Container */
-#main {
-    position: fixed;
-    margin-top: 12%;
-    background: rgba(0, 0, 0, .5);
-    color: #f1f1f1;
-    width: 100%;
-    padding: 20px;
-    position: sticky; 
-}
-/* End Home Container */
 
 /* Videos */
-.video {
-    position: fixed;
+#homeVideo {
     position: fixed;
     right: 0;
     bottom: 0;
@@ -27,7 +20,7 @@
     min-height: 100%;
 }
 
-#homeVideo {
+.video {
     position: fixed;
     right: 0;
     bottom: 0;
@@ -53,6 +46,8 @@
 
 #sunnyVideo {
     display: none;
+    min-width: 100%;
+    min-height: 100%;
 }
 /* End Video*/
 
@@ -67,8 +62,28 @@
 }
 /* End Button */
 
+/* Home Container */
+#main {
+    position: fixed;
+    margin-top: 12%;
+    background: rgba(0, 0, 0, .5);
+    color: #f1f1f1;
+    width: 100%;
+    padding: 20px;
+    position: sticky; 
+}
+/* End Home Container */
+
 /* Results Container */
 .container3 {
     display: none;
 }
 /* End Results Container */
+
+/* Food Display */
+.food {
+    width: 45%;
+    background: white;
+    margin: auto;
+}
+/* End Food Display */

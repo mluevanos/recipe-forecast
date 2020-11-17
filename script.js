@@ -31,6 +31,38 @@ $("#confirm").on("click", function() {
         //Displaying current weather conditions on the page
         $(".openWeather").prepend("<hr>" + "Current Temperature : " + tempNowFar + "F" + "<br>" + "Current Condition : " + currentDesc );
         $(".icon-holder").attr("src", tempIcon);
+
+        //setting the Hot weather conditional to pull up appropriate recipes
+        if (weatherCode === "113") {
+            $("#sunnyVideo").show();
+            $("#homeVideo").hide();
+            let urlHot = "https://api.edamam.com/search?q=salad&app_id=c814663e&app_key=0c4b0756ea6a4474bc365916d73a84b7";
+            $.ajax({
+                url: urlHot,
+                method: "GET"
+            })
+            .then(function(response) {
+                console.log(response);
+                let recipeList = response.hits;
+                console.log(recipeList[0].recipe.label);
+                console.log(recipeList[0].recipe.shareAs);
+                for (let i = 0; i < recipeList.length; i++) {
+                    let picDiv = $("<div>");
+                    let recipeName = recipeList[i].recipe.label;
+                    let recipeUrl = recipeList[i].recipe.shareAs;
+                    let recipeImg = recipeList[i].recipe.image;
+                    console.log(recipeImg);
+                    let recipeText = recipeName.link(recipeUrl);
+                    let recipeIcon = $("<img>").attr("src", recipeImg);
+                    picDiv.prepend("<br><hr>" + recipeText);
+                    picDiv.append(recipeIcon);
+                    $(".food").append(picDiv);
+                }
+            })
+        }
+        else {
+            console.log("weather code 113 not appearing");
+        }
     })
 
 })
