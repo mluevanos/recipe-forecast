@@ -1,7 +1,7 @@
- #main {
+ /* #main {
      background-image: url("assets/clouds.mp4");
      background-size: cover;
- }
+ } */
  
  /* Text */
 .whiteText {
@@ -30,18 +30,26 @@
 
 #cloudyVideo {
     display: none;
+    min-width: 100%;
+    min-height: 100%;
 }
 
 #windyVideo {
     display: none;
+    min-width: 100%;
+    min-height: 100%;
 }
 
 #rainVideo {
     display: none;
+    min-width: 100%;
+    min-height: 100%;
 }
 
 #snowVideo {
     display: none;
+    min-width: 100%;
+    min-height: 100%;
 }
 
 #sunnyVideo {
@@ -82,7 +90,7 @@
 
 /* Food Display */
 .food {
-    width: 45%;
+    width: 40%;
     background: white;
     margin: auto;
 }
