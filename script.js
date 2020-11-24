@@ -1,6 +1,8 @@
 var baseUrl = 'http://api.worldweatheronline.com/premium/v1/weather.ashx?q=';
 var tailBaseUrl = '&format=json&num_of_days=1&date=today&includelocation=yes&key=d22e5db08ccb4da289d190837201211';
 
+
+
 $("#confirm").on("click", function() {
     $(".container3").show();
     let localInput = document.querySelector(".myLocation").value;
@@ -31,6 +33,7 @@ $("#confirm").on("click", function() {
         //Displaying current weather conditions on the page
         $(".openWeather").prepend("<hr>" + "Current Temperature : " + tempNowFar + "F" + "<br>" + "Current Condition : " + currentDesc );
         $(".icon-holder").attr("src", tempIcon);
+    
 
         //setting the Hot weather conditional to pull up appropriate recipes
         if (weatherCode === "113") {
@@ -41,24 +44,8 @@ $("#confirm").on("click", function() {
                 url: urlHot,
                 method: "GET"
             })
-            .then(function(response) {
-                console.log(response);
-                let recipeList = response.hits;
-                console.log(recipeList[0].recipe.label);
-                console.log(recipeList[0].recipe.shareAs);
-                for (let i = 0; i < recipeList.length; i++) {
-                    let picDiv = $("<div>");
-                    let recipeName = recipeList[i].recipe.label;
-                    let recipeUrl = recipeList[i].recipe.shareAs;
-                    let recipeImg = recipeList[i].recipe.image;
-                    console.log(recipeImg);
-                    let recipeText = recipeName.link(recipeUrl);
-                    let recipeIcon = $("<img>").attr("src", recipeImg);
-                    picDiv.prepend("<br><hr>" + recipeText + "<br>");
-                    picDiv.append(recipeIcon);
-                    $(".food").append(picDiv);
-                }
-            })
+            .then(recipeResponse);
+            console.log(response);
         }
         //setting the Cold weather conditional to surface appropriate recipes
         else if (weatherCode === "323"|| weatherCode === "326" || weatherCode === "329" || weatherCode === "332" || weatherCode === "335" || weatherCode === "338") {
@@ -70,23 +57,7 @@ $("#confirm").on("click", function() {
                 url: urlCold,
                 method: "GET"
             })
-            .then(function(response) {
-                console.log(response);
-                let recipeList = response.hits;
-                console.log(recipeList[0].recipe.label);
-                console.log(recipeList[0].recipe.shareAs);
-                for (i = 0; i < recipeList.length; i++) {
-                    let picDiv = $("<div>");
-                    let recipeName = recipeList[i].recipe.label;
-                    let recipeUrl = recipeList[i].recipe.shareAs;
-                    let recipeImg = recipeList[i].recipe.image;
-                    let recipeText = recipeName.link(recipeUrl);
-                    let recipeIcon = $("<img>").attr("src", recipeImg);
-                    picDiv.prepend("<br><hr>" + recipeText + "<br>");
-                    picDiv.append(recipeIcon);
-                    $(".food").append(picDiv);
-                }
-            })
+            .then(recipeResponse);
         }
         //setting the Rain weather conditional to surface appropriate recipes
         else if (weatherCode ==="308" || weatherCode === "305" || weatherCode === "302" || weatherCode === "299" || weatherCode === "296" || weatherCode === "293") {
@@ -97,23 +68,7 @@ $("#confirm").on("click", function() {
                 url: urlRain,
                 method: "GET"
             })
-            .then(function(response) {
-                console.log("rain response: " + response) 
-                let recipeList = response.hits;
-                console.log(recipeList[0].recipe.label);
-                console.log(recipeList[0].recipe.shareAs);
-                for (i = 0; i < recipeList.length; i++) {
-                    let picDiv = $("<div>");
-                    let recipeName = recipeList[i].recipe.label;
-                    let recipeUrl = recipeList[i].recipe.shareAs;
-                    let recipeImg = recipeList[i].recipe.image;
-                    let recipeText = recipeName.link(recipeUrl);
-                    let recipeIcon = $("<img>").attr("src", recipeImg);
-                    picDiv.prepend("<br><hr>" + recipeText + "<br>");
-                    picDiv.append(recipeIcon);
-                    $(".food").append(picDiv);
-                }
-            })
+            .then(recipeResponse);
         }
         //setting the Snow weather conditional to surface appropriate recipes
         else if(weatherCode === "122" || weatherCode === "230") {
@@ -124,23 +79,7 @@ $("#confirm").on("click", function() {
             url: urlSnow,
             method: "GET"
             })
-            .then(function(response) {
-                console.log(response);
-                let recipeList = response.hits;
-                console.log(recipeList[0].recipe.label);
-                console.log(recipeList[0].recipe.shareAs);
-                for (i = 0; i < recipeList.length; i++) {
-                    let picDiv = $("<div>");
-                    let recipeName = recipeList[i].recipe.label;
-                    let recipeUrl = recipeList[i].recipe.shareAs;
-                    let recipeImg = recipeList[i].recipe.image;
-                    let recipeText = recipeName.link(recipeUrl);
-                    let recipeIcon = $("<img>").attr("src", recipeImg);
-                    picDiv.prepend("<br><hr>" + recipeText + "<br>");
-                    picDiv.append(recipeIcon);
-                    $(".food").append(picDiv);
-                    }
-                })
+            .then(recipeResponse);
             }
         //setting the conditional for other weather conditions under a cloudy gen response
         else {
@@ -151,27 +90,28 @@ $("#confirm").on("click", function() {
                 url: urlDessert,
                 method: "GET"
                 })
-            .then(function(response) {
-                console.log(response);
-                let recipeList = response.hits;
-                console.log(recipeList[0].recipe.label);
-                console.log(recipeList[0].recipe.shareAs); //OR recipe.shareAs
-                for (i = 0; i < recipeList.length; i++){
-                    let picDiv = $("<div>");
-                    let recipeName = recipeList[i].recipe.label;
-                    let recipeUrl = recipeList[i].recipe.shareAs;
-                    let recipeImg = recipeList[i].recipe.image;
-                    let recipeText = recipeName.link(recipeUrl);
-                    let recipeIcon = $("<img>").attr("src", recipeImg);
-                    picDiv.prepend("<br><hr>" + recipeText + "<br>");
-                    picDiv.append(recipeIcon);
-                    $(".food").append(picDiv);
-            }
-        })
-    }
-
-
+            .then(recipeResponse);
+        }
     })
 })
 
+//Function to render recipes based on ajax call
+let recipeResponse = (response) => {
+    console.log(response);
+    let recipeList = response.hits;
+    console.log(recipeList[0].recipe.label);
+    console.log(recipeList[0].recipe.shareAs);
+    for (let i = 0; i < recipeList.length; i++) {
+        let picDiv = $("<div>");
+        let recipeName = recipeList[i].recipe.label;
+        let recipeUrl = recipeList[i].recipe.shareAs;
+        let recipeImg = recipeList[i].recipe.image;
+        console.log(recipeImg);
+        let recipeText = recipeName.link(recipeUrl);
+        let recipeIcon = $("<img>").attr("src", recipeImg);
+        picDiv.prepend("<br><hr>" + recipeText + "<br>");
+        picDiv.append(recipeIcon);
+        $(".food").append(picDiv);
+    }
+}
 
