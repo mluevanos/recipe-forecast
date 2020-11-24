@@ -1,7 +1,4 @@
- /* #main {
-     background-image: url("assets/clouds.mp4");
-     background-size: cover;
- } */
+
  
  /* Text */
 .whiteText {
@@ -20,42 +17,34 @@
     min-height: 100%;
 }
 
-.video {
+video {
+    object-fit: cover;
+    width: 100vw;
+    height: 100vh;
     position: fixed;
-    right: 0;
-    bottom: 0;
-    min-width: 100%;
-    min-height: 100%;
+    top: 0;
+    left: 0;
 }
 
 #cloudyVideo {
     display: none;
-    min-width: 100%;
-    min-height: 100%;
 }
 
 #windyVideo {
     display: none;
-    min-width: 100%;
-    min-height: 100%;
 }
 
 #rainVideo {
     display: none;
-    min-width: 100%;
-    min-height: 100%;
 }
 
 #snowVideo {
     display: none;
-    min-width: 100%;
-    min-height: 100%;
 }
 
 #sunnyVideo {
     display: none;
-    min-width: 100%;
-    min-height: 100%;
+
 }
 /* End Video*/
 
