@@ -4,6 +4,11 @@ var tailBaseUrl = '&format=json&num_of_days=1&date=today&includelocation=yes&key
 
 
 $("#confirm").on("click", function() {
+    
+    // if ($("#main").has(".container3")) {
+    //     $(".container3").detach();
+    // }
+
     $(".container3").show();
     let localInput = document.querySelector(".myLocation").value;
     console.log(localInput);
@@ -45,8 +50,8 @@ $("#confirm").on("click", function() {
                 method: "GET"
             })
             .then(recipeResponse);
-            console.log(response);
         }
+
         //setting the Cold weather conditional to surface appropriate recipes
         else if (weatherCode === "323"|| weatherCode === "326" || weatherCode === "329" || weatherCode === "332" || weatherCode === "335" || weatherCode === "338") {
             console.log("weather code is snow");
@@ -59,6 +64,7 @@ $("#confirm").on("click", function() {
             })
             .then(recipeResponse);
         }
+
         //setting the Rain weather conditional to surface appropriate recipes
         else if (weatherCode ==="308" || weatherCode === "305" || weatherCode === "302" || weatherCode === "299" || weatherCode === "296" || weatherCode === "293") {
             $("#rainVideo").show();
@@ -70,6 +76,7 @@ $("#confirm").on("click", function() {
             })
             .then(recipeResponse);
         }
+
         //setting the Snow weather conditional to surface appropriate recipes
         else if(weatherCode === "122" || weatherCode === "230") {
             $("#snowVideo").show();
@@ -81,6 +88,7 @@ $("#confirm").on("click", function() {
             })
             .then(recipeResponse);
             }
+            
         //setting the conditional for other weather conditions under a cloudy gen response
         else {
             $("#cloudyVideo").show();
