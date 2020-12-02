@@ -5,11 +5,12 @@ var tailBaseUrl = '&format=json&num_of_days=1&date=today&includelocation=yes&key
 
 $("#confirm").on("click", function() {
     
+    //resetting the page so more than 1 result doesn't appear
     $(".icon-holder").removeAttr("src");
     $(".openWeather").empty();
     $(".food").empty();
-
     $(".container3").show();
+
     let localInput = document.querySelector(".myLocation").value;
     console.log(localInput);
 
@@ -18,10 +19,16 @@ $("#confirm").on("click", function() {
         url: queryUrl,
         method: "GET"
     })
-    .then(function(response) {
+    .then(searchResponse);
+})
+
+
+//Function to render search results on page
+const searchResponse = (response) => {
+
         //to test the url and response from weather API
-        console.log(queryUrl);
-        console.log(response.data);
+        // console.log(queryUrl);
+        // console.log(response.data);
 
         //setting current weather conditions to variables which will be displayed
         let responseData = response.data.current_condition[0];
@@ -48,7 +55,7 @@ $("#confirm").on("click", function() {
             $("#windyVideo").hide();
             $("#snowVideo").hide();
             $("#cloudyVideo").hide();
-            let urlHot = "https://api.edamam.com/search?q=salad&app_id=c814663e&app_key=0c4b0756ea6a4474bc365916d73a84b7";
+            let urlHot = "https://api.edamam.com/search?q=healthy&app_id=c814663e&app_key=0c4b0756ea6a4474bc365916d73a84b7";
             $.ajax({
                 url: urlHot,
                 method: "GET"
@@ -58,14 +65,13 @@ $("#confirm").on("click", function() {
 
         //setting the Cold weather conditional to surface appropriate recipes
         else if (weatherCode === "323"|| weatherCode === "326" || weatherCode === "329" || weatherCode === "332" || weatherCode === "335" || weatherCode === "338") {
-            console.log("weather code is snow");
             $("#windyVideo").show();
             $("#rainVideo").hide();
             $("#homeVideo").hide();
             $("#snowVideo").hide();
             $("#cloudyVideo").hide();
             $("#sunnyVideo").hide();
-            let urlCold = "https://api.edamam.com/search?q=soup&app_id=c814663e&app_key=0c4b0756ea6a4474bc365916d73a84b7";
+            let urlCold = "https://api.edamam.com/search?q=warm&app_id=c814663e&app_key=0c4b0756ea6a4474bc365916d73a84b7";
             $.ajax({
                 url: urlCold,
                 method: "GET"
@@ -81,7 +87,7 @@ $("#confirm").on("click", function() {
             $("#snowVideo").hide();
             $("#cloudyVideo").hide();
             $("#sunnyVideo").hide();
-            let urlRain = "https://api.edamam.com/search?q=crockpot&app_id=c814663e&app_key=0c4b0756ea6a4474bc365916d73a84b7";
+            let urlRain = "https://api.edamam.com/search?q=comfort&app_id=c814663e&app_key=0c4b0756ea6a4474bc365916d73a84b7";
             $.ajax({
                 url: urlRain,
                 method: "GET"
@@ -97,7 +103,7 @@ $("#confirm").on("click", function() {
             $("#windyVideo").hide();
             $("#cloudyVideo").hide();
             $("#sunnyVideo").hide();
-            let urlSnow = "https://api.edamam.com/search?q=roast&app_id=c814663e&app_key=0c4b0756ea6a4474bc365916d73a84b7";
+            let urlSnow = "https://api.edamam.com/search?q=hot&app_id=c814663e&app_key=0c4b0756ea6a4474bc365916d73a84b7";
             $.ajax({
             url: urlSnow,
             method: "GET"
@@ -113,18 +119,18 @@ $("#confirm").on("click", function() {
             $("#windyVideo").hide();
             $("#snowVideo").hide();
             $("#sunnyVideo").hide();
-            let urlDessert = "https://api.edamam.com/search?q=dessert&app_id=c814663e&app_key=0c4b0756ea6a4474bc365916d73a84b7";
+            let urlDessert = "https://api.edamam.com/search?q=delicious&app_id=c814663e&app_key=0c4b0756ea6a4474bc365916d73a84b7";
                 $.ajax({
                 url: urlDessert,
                 method: "GET"
                 })
             .then(recipeResponse);
         }
-    })
-})
+    }
+
 
 //Function to render recipes based on ajax call
-let recipeResponse = (response) => {
+const recipeResponse = (response) => {
     console.log(response);
     let recipeList = response.hits;
     console.log(recipeList[0].recipe.label);
@@ -136,7 +142,7 @@ let recipeResponse = (response) => {
         let recipeImg = recipeList[i].recipe.image;
         console.log(recipeImg);
         let recipeText = recipeName.link(recipeUrl);
-        let recipeIcon = $("<img>").attr("src", recipeImg);
+        let recipeIcon = $("<img>").attr("src", recipeImg).append("<br>");
         picDiv.prepend("<br><hr>" + recipeText + "<br>");
         picDiv.append(recipeIcon);
         $(".food").append(picDiv);

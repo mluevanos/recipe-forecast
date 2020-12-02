@@ -49,12 +49,12 @@ video {
 /* End Video*/
 
 /* Button */
-#confirm {
+div button {
     width: 200px;
     font-size: 18px;
     padding: 10px;
     border: none;
-    background: #000;
+    background-color: #000;
     cursor: pointer;
 }
 /* End Button */
