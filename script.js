@@ -2,7 +2,7 @@ var baseUrl = 'http://api.worldweatheronline.com/premium/v1/weather.ashx?q=';
 var tailBaseUrl = '&format=json&num_of_days=1&date=today&includelocation=yes&key=d22e5db08ccb4da289d190837201211';
 
 
-
+//On click for users who enter their own location
 $("#confirm").on("click", function() {
     
     //resetting the page so more than 1 result doesn't appear
@@ -15,6 +15,7 @@ $("#confirm").on("click", function() {
     console.log(localInput);
 
     let queryUrl = baseUrl + localInput + tailBaseUrl;
+    //ajax request to get weather and recipes generated
     $.ajax({
         url: queryUrl,
         method: "GET"
@@ -22,8 +23,35 @@ $("#confirm").on("click", function() {
     .then(searchResponse);
 })
 
+//On click for users who select "Use Location" button
+$("#useCurrent").on("click", function() {
 
-//Function to render search results on page
+     //resetting the page so more than 1 result doesn't appear
+    $(".icon-holder").removeAttr("src");
+    $(".openWeather").empty();
+    $(".food").empty();
+    $(".container3").show();
+
+    //ajax request to get JSON data
+    $.getJSON("https://api.ipify.org?format=json", function (data) {
+
+        console.log(data.ip);
+        let usersIp = data.ip;
+        let queryUrl = baseUrl + usersIp + tailBaseUrl;
+
+        //ajax request to get weather and recipes generated
+        $.ajax({
+            url: queryUrl,
+            methos: "GET"
+            })
+            .then(searchResponse);
+        })
+
+        
+})
+
+
+//Function to render weather results on page
 const searchResponse = (response) => {
 
         //to test the url and response from weather API
