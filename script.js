@@ -1,4 +1,4 @@
-var baseUrl = 'http://api.worldweatheronline.com/premium/v1/weather.ashx?q=';
+var baseUrl = 'https://api.worldweatheronline.com/premium/v1/weather.ashx?q=';
 var tailBaseUrl = '&format=json&num_of_days=1&date=today&includelocation=yes&key=d22e5db08ccb4da289d190837201211';
 
 
