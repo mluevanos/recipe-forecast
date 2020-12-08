@@ -92,7 +92,7 @@ const searchResponse = (response) => {
         }
 
         //setting the Cold weather conditional to surface appropriate recipes
-        else if (weatherCode === "323"|| weatherCode === "326" || weatherCode === "329" || weatherCode === "332" || weatherCode === "335" || weatherCode === "338") {
+        else if (weatherCode === "122" || weatherCode === "323"|| weatherCode === "326" || weatherCode === "329" || weatherCode === "332" || weatherCode === "335" || weatherCode === "338") {
             $("#windyVideo").show();
             $("#rainVideo").hide();
             $("#homeVideo").hide();
