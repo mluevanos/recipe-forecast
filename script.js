@@ -27,6 +27,7 @@ $("#confirm").on("click", function() {
 $("#useCurrent").on("click", function() {
 
      //resetting the page so more than 1 result doesn't appear
+     $(".myLocation").val('');
     $(".icon-holder").removeAttr("src");
     $(".openWeather").empty();
     $(".food").empty();
