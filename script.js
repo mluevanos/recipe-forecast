@@ -92,7 +92,7 @@ const searchResponse = (response) => {
         }
 
         //setting the Cold weather conditional to surface appropriate recipes
-        else if (weatherCode === "323"|| weatherCode === "326" || weatherCode === "329" || weatherCode === "332" || weatherCode === "335" || weatherCode === "338") {
+        else if (weatherCode === "323"|| weatherCode === "326" || weatherCode === "329" || weatherCode === "332" || weatherCode === "335") {
             $("#windyVideo").show();
             $("#rainVideo").hide();
             $("#homeVideo").hide();
@@ -124,7 +124,7 @@ const searchResponse = (response) => {
         }
 
         //setting the Snow weather conditional to surface appropriate recipes
-        else if(weatherCode === "230") {
+        else if(weatherCode === "230" || weatherCode === "338") {
             $("#snowVideo").show();
             $("#rainVideo").hide();
             $("#homeVideo").hide();
