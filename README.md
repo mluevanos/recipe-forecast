@@ -1,5 +1,7 @@
 # recipe-forecast
 
+https://mluevanos.github.io/recipe-forecast/
+
 According to nutrition journal, people are cooking more and more, especially men. Recipe-Forecast avoids choice overload by curating recipe options based on environmental factors, increasing the chance that one of the recipes would be selected. 
 
 Just enter your city or postal code and the current weather conditions will appear along with a selection of recipes that would pair well. The program is utilizing 2 server-side APIs (World Weather Online & Edamam) and is responsive.
