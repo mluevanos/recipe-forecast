@@ -1,5 +1,5 @@
 var baseUrl = 'https://api.worldweatheronline.com/premium/v1/weather.ashx?q=';
-var tailBaseUrl = '&format=json&num_of_days=1&date=today&includelocation=yes&key=e9a932f0977f4974b2c234959211101';
+var tailBaseUrl = '&format=json&num_of_days=1&date=today&includelocation=yes&key=ae9bc288b2844f58ab0192504211403';
 
 
 //On click for users who enter their own location
@@ -93,7 +93,7 @@ const searchResponse = (response) => {
         }
 
         //setting the Cold weather conditional to surface appropriate recipes
-        else if (weatherCode === "323"|| weatherCode === "326" || weatherCode === "329" || weatherCode === "332" || weatherCode === "335" || weatherCode === "389" || weatherCode === "200") {
+        else if (weatherCode === "323"|| weatherCode === "326" || weatherCode === "329" || weatherCode === "335" || weatherCode === "389" || weatherCode === "200") {
             $("#windyVideo").show();
             $("#rainVideo").hide();
             $("#homeVideo").hide();
@@ -125,7 +125,7 @@ const searchResponse = (response) => {
         }
 
         //setting the Snow weather conditional to surface appropriate recipes
-        else if(weatherCode === "230" || weatherCode === "338") {
+        else if(weatherCode === "230" || weatherCode === "338" || weatherCode === "332" || weatherCode === "179") {
             $("#snowVideo").show();
             $("#rainVideo").hide();
             $("#homeVideo").hide();
