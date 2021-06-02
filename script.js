@@ -1,5 +1,5 @@
 var baseUrl = 'https://api.worldweatheronline.com/premium/v1/weather.ashx?q=';
-var tailBaseUrl = '&format=json&num_of_days=1&date=today&includelocation=yes&key=ae9bc288b2844f58ab0192504211403';
+var tailBaseUrl = '&format=json&num_of_days=1&date=today&includelocation=yes&key=b81eac9031c042f690e182505210206';
 
 
 //On click for users who enter their own location
